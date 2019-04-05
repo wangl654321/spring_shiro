@@ -47,6 +47,7 @@
             <AppenderRef ref="manageLogsInfo"/>
             <AppenderRef ref="manageLogsError"/>
         </Root>
+        <!--打印sql语句-->
         <logger name="com.manage.mapper" level="debug"/>
     </Loggers>
 </Configuration>
