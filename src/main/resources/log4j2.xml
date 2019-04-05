@@ -47,5 +47,6 @@
             <AppenderRef ref="manageLogsInfo"/>
             <AppenderRef ref="manageLogsError"/>
         </Root>
+        <logger name="com.manage.mapper" level="debug"/>
     </Loggers>
 </Configuration>
