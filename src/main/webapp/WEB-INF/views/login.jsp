@@ -202,7 +202,7 @@
         </div>
         <P style="padding: 30px 0px 10px; position: relative;">
             <span class="u_logo"></span>
-            <input class="ipt" type="text" name="username" placeholder="请输入用户名或邮箱" value="" />
+            <input class="ipt" type="text" name="userName" placeholder="请输入用户名或邮箱" value="" />
         </P>
         <P style="position: relative;">
             <span class="p_logo"></span>

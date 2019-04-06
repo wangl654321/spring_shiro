@@ -12,30 +12,28 @@ import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 
 /***
  *
-*
-* 描    述：登录退出
-*
-* 创 建 者： @author wl
-* 创建时间： 2019/4/4 16:29
-* 创建描述：
-*
-* 修 改 者：
-* 修改时间：
-* 修改描述：
-*
-* 审 核 者：
-* 审核时间：
-* 审核描述：
-*
+ *
+ * 描    述：登录退出
+ *
+ * 创 建 者： @author wl
+ * 创建时间： 2019/4/4 16:29
+ * 创建描述：
+ *
+ * 修 改 者：
+ * 修改时间：
+ * 修改描述：
+ *
+ * 审 核 者：
+ * 审核时间：
+ * 审核描述：
+ *
  */
 @Controller
 public class LoginController {
@@ -70,17 +68,17 @@ public class LoginController {
     /**
      * POST 登录 shiro 写法
      *
-     * @param username 用户名
+     * @param userName 用户名
      * @param password 密码
      * @return
      */
     @ResponseBody
     @RequestMapping(value = "/login")
-    public Result loginPost(String username, String password) {
+    public Result loginPost(String userName, String password) {
 
         LOGGER.info("POST请求登录");
         Result result = new Result();
-        if (StringUtils.isBlank(username)) {
+        if (StringUtils.isBlank(userName)) {
             result.setMsg("用户名不能为空");
             return result;
         }
@@ -89,7 +87,7 @@ public class LoginController {
             return result;
         }
         Subject user = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken(username, DigestUtils.md5Hex(password).toCharArray());
+        UsernamePasswordToken token = new UsernamePasswordToken(userName, DigestUtils.md5Hex(password).toCharArray());
         token.setRememberMe(true);
         try {
             user.login(token);
