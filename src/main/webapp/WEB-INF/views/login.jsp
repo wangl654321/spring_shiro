@@ -150,7 +150,7 @@
                 $("#right_hand").attr("style", "right:-112px;top:-12px");
             });
             // 登录
-            $('#loginform').form({
+            $('#loginForm').form({
                 url:'${path}/login',
                 onSubmit : function() {
                     progressLoad();
@@ -176,25 +176,25 @@
             });
         });
         function submitForm(){
-            $('#loginform').submit();
+            $('#loginForm').submit();
         }
         function clearForm(){
-            $('#loginform').form('clear');
+            $('#loginForm').form('clear');
         }
         //回车登录
-        function enterlogin(){
+        function enterLogin(){
             if (event.keyCode == 13){
                 event.returnValue=false;
                 event.cancel = true;
-                $('#loginform').submit();
+                $('#loginForm').submit();
             }
         }
     </script>
 </head>
-<body onkeydown="enterlogin();">
+<body onkeydown="enterLogin();">
 <div class="top_div"></div>
 <div style="background: rgb(255, 255, 255); margin: -100px auto auto; border: 1px solid rgb(231, 231, 231); border-image: none; width: 400px; height: 200px; text-align: center;">
-    <form method="post" id="loginform">
+    <form method="post" id="loginForm">
         <div style="width: 165px; height: 96px; position: absolute;">
             <div class="tou"></div>
             <div class="initial_left_hand" id="left_hand"></div>
