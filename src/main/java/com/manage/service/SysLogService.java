@@ -8,7 +8,7 @@ import com.manage.utils.PageInfo;
  * @author：zhixuan.wang
  * @date：2015/10/30 10:35
  */
-public interface LogService {
+public interface SysLogService {
 
     void insertLog(SysLog sysLog);
 

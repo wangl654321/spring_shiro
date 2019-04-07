@@ -14,7 +14,7 @@
     SELECT
         e.id AS id
     FROM
-        role r
+        sys_role r
     LEFT JOIN role_resource e ON r.id = e.role_id
     WHERE
         r.id = #{id}

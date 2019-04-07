@@ -3,11 +3,11 @@ package com.manage.controller;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.manage.code.Result;
-import com.manage.model.Role;
-import com.manage.model.User;
-import com.manage.service.UserService;
+import com.manage.model.SysRole;
+import com.manage.model.SysUser;
+import com.manage.service.SysUserService;
 import com.manage.utils.PageInfo;
-import com.manage.vo.UserVo;
+import com.manage.vo.SysUserVo;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -48,7 +48,7 @@ public class UserController extends BaseController {
     private static Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
-    private UserService userService;
+    private SysUserService userService;
 
     /**
      * 用户管理页
@@ -72,7 +72,7 @@ public class UserController extends BaseController {
      */
     @RequestMapping(value = "/dataGrid", method = RequestMethod.POST)
     @ResponseBody
-    public PageInfo dataGrid(UserVo userVo, Integer page, Integer rows, String sort, String order) {
+    public PageInfo dataGrid(SysUserVo userVo, Integer page, Integer rows, String sort, String order) {
         PageInfo pageInfo = new PageInfo(page, rows);
         Map<String, Object> condition = Maps.newHashMap();
 
@@ -111,9 +111,9 @@ public class UserController extends BaseController {
      */
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
-    public Result add(UserVo userVo) {
+    public Result add(SysUserVo userVo) {
         Result result = new Result();
-        User u = userService.findUserByLoginName(userVo.getLoginName());
+        SysUser u = userService.findUserByLoginName(userVo.getLoginName());
         if (u != null) {
             result.setMsg("用户名已存在!");
             return result;
@@ -140,10 +140,10 @@ public class UserController extends BaseController {
      */
     @RequestMapping("/editPage")
     public String editPage(Long id, Model model) {
-        UserVo userVo = userService.findUserVoById(id);
-        List<Role> rolesList = userVo.getRolesList();
+        SysUserVo userVo = userService.findUserVoById(id);
+        List<SysRole> rolesList = userVo.getRolesList();
         List<Long> ids = Lists.newArrayList();
-        for (Role role : rolesList) {
+        for (SysRole role : rolesList) {
             ids.add(role.getId());
         }
         model.addAttribute("roleIds", ids);
@@ -159,9 +159,9 @@ public class UserController extends BaseController {
      */
     @RequestMapping("/edit")
     @ResponseBody
-    public Result edit(UserVo userVo) {
+    public Result edit(SysUserVo userVo) {
         Result result = new Result();
-        User user = userService.findUserByLoginName(userVo.getLoginName());
+        SysUser user = userService.findUserByLoginName(userVo.getLoginName());
         if (user != null && !user.getId().equals(userVo.getId())) {
             result.setMsg("用户名已存在!");
             return result;

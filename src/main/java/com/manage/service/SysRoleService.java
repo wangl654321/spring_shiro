@@ -1,6 +1,6 @@
 package com.manage.service;
 
-import com.manage.model.Role;
+import com.manage.model.SysRole;
 import com.manage.utils.PageInfo;
 import com.manage.vo.Tree;
 
@@ -12,7 +12,7 @@ import java.util.Map;
  * @author：zhixuan.wang
  * @date：2015/10/1 14:51
  */
-public interface RoleService {
+public interface SysRoleService {
     /**
      * 查询权限列表
      *
@@ -32,7 +32,7 @@ public interface RoleService {
      *
      * @param role
      */
-    void addRole(Role role);
+    void addRole(SysRole role);
 
     /**
      * 根据id删除权限
@@ -47,14 +47,14 @@ public interface RoleService {
      * @param id
      * @return
      */
-    Role findRoleById(Long id);
+    SysRole findRoleById(Long id);
 
     /**
      * 更新权限
      *
      * @param role
      */
-    void updateRole(Role role);
+    void updateRole(SysRole role);
 
     /**
      * 根据权限id查询资源集合

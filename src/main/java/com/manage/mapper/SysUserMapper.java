@@ -1,8 +1,8 @@
 package com.manage.mapper;
 
-import com.manage.model.User;
+import com.manage.model.SysUser;
 import com.manage.utils.PageInfo;
-import com.manage.vo.UserVo;
+import com.manage.vo.SysUserVo;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -27,7 +27,7 @@ import java.util.List;
  *
  */
 @Repository
-public interface UserMapper {
+public interface SysUserMapper {
     /**
      * 删除用户
      *
@@ -42,7 +42,7 @@ public interface UserMapper {
      * @param user
      * @return
      */
-    int insert(User user);
+    int insert(SysUser user);
 
     /**
      * 修改用户
@@ -50,7 +50,7 @@ public interface UserMapper {
      * @param user
      * @return
      */
-    int updateUser(User user);
+    int updateUser(SysUser user);
 
     /**
      * 根据用户名查询用户
@@ -58,7 +58,7 @@ public interface UserMapper {
      * @param username
      * @return
      */
-    User findUserByLoginName(String username);
+    SysUser findUserByLoginName(String username);
 
     /**
      * 根据用户id查询用户
@@ -66,7 +66,7 @@ public interface UserMapper {
      * @param id
      * @return
      */
-    User findUserById(Long id);
+    SysUser findUserById(Long id);
 
     /**
      * 用户列表
@@ -98,7 +98,7 @@ public interface UserMapper {
      * @param id
      * @return
      */
-    UserVo findUserVoById(Long id);
+    SysUserVo findUserVoById(Long id);
 
     /**
      * 根据id查询用户
@@ -106,5 +106,5 @@ public interface UserMapper {
      * @param id
      * @return
      */
-    User selectByPrimaryKey(Long id);
+    SysUser selectByPrimaryKey(Long id);
 }

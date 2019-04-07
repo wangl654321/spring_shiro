@@ -1,15 +1,15 @@
 package com.manage.service.impl;
 
 import com.google.common.collect.Lists;
-import com.manage.mapper.RoleMapper;
+import com.manage.mapper.SysRoleMapper;
 import com.manage.mapper.RoleResourceMapper;
 import com.manage.mapper.UserRoleMapper;
-import com.manage.model.Role;
+import com.manage.model.SysRole;
 import com.manage.model.RoleResource;
 import com.manage.utils.PageInfo;
 import com.manage.vo.Tree;
 import com.manage.exception.ServiceException;
-import com.manage.service.RoleService;
+import com.manage.service.SysRoleService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,12 +39,12 @@ import java.util.Map;
  */
 @Service
 @Transactional(rollbackFor = RuntimeException.class)
-public class RoleServiceImpl implements RoleService {
+public class SysRoleServiceImpl implements SysRoleService {
 
-    private static Logger LOGGER = LoggerFactory.getLogger(RoleServiceImpl.class);
+    private static Logger LOGGER = LoggerFactory.getLogger(SysRoleServiceImpl.class);
 
     @Autowired
-    private RoleMapper roleMapper;
+    private SysRoleMapper roleMapper;
     @Autowired
     private RoleResourceMapper roleResourceMapper;
     @Autowired
@@ -59,8 +59,8 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public List<Tree> findTree() {
         List<Tree> trees = Lists.newArrayList();
-        List<Role> roles = roleMapper.findRoleAll();
-        for (Role role : roles) {
+        List<SysRole> roles = roleMapper.findRoleAll();
+        for (SysRole role : roles) {
             Tree tree = new Tree();
             tree.setId(role.getId());
             tree.setText(role.getName());
@@ -71,7 +71,7 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public void addRole(Role role) {
+    public void addRole(SysRole role) {
         int insert = roleMapper.insert(role);
         if (insert != 1) {
             LOGGER.warn("插入失败，参数：{}", role.toString());
@@ -89,12 +89,12 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public Role findRoleById(Long id) {
+    public SysRole findRoleById(Long id) {
         return roleMapper.findRoleById(id);
     }
 
     @Override
-    public void updateRole(Role role) {
+    public void updateRole(SysRole role) {
         int update = roleMapper.updateRole(role);
         if (update != 1) {
             LOGGER.warn("更新失败，参数：{}", role.toString());

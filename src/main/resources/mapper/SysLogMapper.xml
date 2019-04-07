@@ -17,30 +17,30 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    from syslog
+    from sys_log
     where id = #{id,jdbcType=BIGINT}
   </select>
 
   <select id="findDataGrid" resultMap="BaseResultMap" parameterType="com.manage.utils.PageInfo">
     select
     <include refid="Base_Column_List" />
-    from syslog
+    from sys_log
   </select>
 
   <select id="findDataGridCount" resultType="java.lang.Integer" parameterType="com.manage.utils.PageInfo">
     select count(*) count
-    from syslog
+    from sys_log
   </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from syslog
+    delete from sys_log
     where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.manage.model.SysLog" >
     <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into syslog (login_name, role_name, opt_content, 
+    insert into sys_log (login_name, role_name, opt_content,
       client_ip, create_time)
     values (#{loginName,jdbcType=VARCHAR}, #{roleName,jdbcType=VARCHAR}, #{optContent,jdbcType=VARCHAR}, 
       #{clientIp,jdbcType=VARCHAR}, now())
@@ -49,7 +49,7 @@
     <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into syslog
+    insert into sys_log
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="loginName != null" >
         login_name,
@@ -86,7 +86,7 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.manage.model.SysLog" >
-    update syslog
+    update sys_log
     <set >
       <if test="loginName != null" >
         login_name = #{loginName,jdbcType=VARCHAR},
@@ -107,7 +107,7 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.manage.model.SysLog" >
-    update syslog
+    update sys_log
     set login_name = #{loginName,jdbcType=VARCHAR},
       role_name = #{roleName,jdbcType=VARCHAR},
       opt_content = #{optContent,jdbcType=VARCHAR},

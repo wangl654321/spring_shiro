@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.manage.mapper.RoleMapper">
-    <resultMap id="BaseResultMap" type="com.manage.model.Role">
+<mapper namespace="com.manage.mapper.SysRoleMapper">
+    <resultMap id="BaseResultMap" type="com.manage.model.SysRole">
         <id column="id" property="id" jdbcType="BIGINT"/>
         <result column="name" property="name" jdbcType="VARCHAR"/>
         <result column="seq" property="seq" jdbcType="TINYINT"/>
@@ -15,7 +15,7 @@
     <select id="findRolePageCondition" resultMap="BaseResultMap" parameterType="com.manage.utils.PageInfo">
         select
         <include refid="Base_Column_List"/>
-        from role
+        from sys_role
         order by ${sort} ${order}
         limit #{from}, #{size}
     </select>
@@ -23,19 +23,19 @@
     <select id="findRolePageCount" resultType="java.lang.Integer" parameterType="com.manage.utils.PageInfo">
     select 
     count(*) count
-    from role
+    from sys_role
   </select>
 
     <select id="findRoleAll" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        from role order by seq
+        from sys_role order by seq
     </select>
 
     <select id="findRoleById" resultMap="BaseResultMap" parameterType="java.lang.Long">
         select
         <include refid="Base_Column_List"/>
-        from role
+        from sys_role
         where id = #{id,jdbcType=BIGINT}
     </select>
 
@@ -43,13 +43,13 @@
     SELECT
         e.resource_id AS id
     FROM
-        role r
+        sys_role r
     LEFT JOIN role_resource e ON r.id = e.role_id
     WHERE
         r.id = #{id}
   </select>
 
-    <select id="findResourceIdListByRoleIdAndType" resultType="com.manage.model.Resource"
+    <select id="findResourceIdListByRoleIdAndType" resultType="com.manage.model.SysResource"
             parameterType="java.lang.Long">
     SELECT
         s.id AS id,
@@ -63,9 +63,9 @@
         s.resource_type AS resourceType,
         s.create_date AS createDate
     FROM
-        role r
+        sys_role r
     LEFT JOIN role_resource e ON r.id = e.role_id
-    LEFT JOIN resource s ON e.resource_id = s.id
+    LEFT JOIN sys_resource s ON e.resource_id = s.id
     WHERE
         r.id = #{id}
     AND s.resource_type = 0
@@ -75,7 +75,7 @@
     SELECT
         e.id AS id
     FROM
-        role r
+        sys_role r
     LEFT JOIN role_resource e ON r.id = e.role_id
     WHERE
         r.id = #{id}
@@ -86,25 +86,25 @@
         e.id AS id,
         s.url AS url
     FROM
-        role r
+        sys_role r
     LEFT JOIN role_resource e ON r.id = e.role_id
-    LEFT JOIN resource s ON e.resource_id = s.id
+    LEFT JOIN sys_resource s ON e.resource_id = s.id
     WHERE
         r.id = #{id}
   </select>
 
 
-    <insert id="insert" parameterType="com.manage.model.Role">
+    <insert id="insert" parameterType="com.manage.model.SysRole">
         <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
             SELECT LAST_INSERT_ID()
         </selectKey>
-        insert into role (name, seq, description, status)
+        insert into sys_role (name, seq, description, status)
         values (#{name,jdbcType=VARCHAR}, #{seq,jdbcType=TINYINT}, #{description,jdbcType=VARCHAR},
         #{status,jdbcType=TINYINT})
     </insert>
 
-    <update id="updateRole" parameterType="com.manage.model.Role">
-        update role
+    <update id="updateRole" parameterType="com.manage.model.SysRole">
+        update sys_role
         <set>
             <if test="name != null">
                 name = #{name,jdbcType=VARCHAR},
@@ -124,7 +124,7 @@
 
 
     <delete id="deleteRoleById" parameterType="java.lang.Long">
-    delete from role
+    delete from sys_role
     where id = #{id,jdbcType=BIGINT}
   </delete>
 </mapper>

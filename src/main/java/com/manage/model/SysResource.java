@@ -5,12 +5,25 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * @description：资源
- * @author：zhixuan.wang
- * @date：2015/10/1 14:51
+/***
+ *
+*
+* 描    述：资源
+*
+* 创 建 者： @author wl
+* 创建时间： 2019/4/6 23:49
+* 创建描述：
+*
+* 修 改 者：
+* 修改时间：
+* 修改描述：
+*
+* 审 核 者：
+* 审核时间：
+* 审核描述：
+*
  */
-public class Resource implements Serializable {
+public class SysResource implements Serializable {
 
     private static final long serialVersionUID = -5321613594382537470L;
 

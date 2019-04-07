@@ -1,7 +1,7 @@
 package com.manage.aop;
 
 import com.manage.model.SysLog;
-import com.manage.service.LogService;
+import com.manage.service.SysLogService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.PrincipalCollection;
@@ -44,7 +44,7 @@ public class SysLogAop {
     private static Logger LOGGER = LoggerFactory.getLogger(SysLogAop.class);
 
     @Autowired
-    private LogService logService;
+    private SysLogService logService;
 
     @Pointcut("within(@org.springframework.stereotype.Controller *)")
     public void cutController() {

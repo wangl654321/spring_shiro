@@ -1,7 +1,7 @@
 package com.manage.service;
 
-import com.manage.model.Resource;
-import com.manage.model.User;
+import com.manage.model.SysResource;
+import com.manage.model.SysUser;
 import com.manage.vo.Tree;
 
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
  * @author：zhixuan.wang
  * @date：2015/10/1 14:51
  */
-public interface ResourceService {
+public interface SysResourceService {
 
     /**
      * 根据用户查询树形菜单列表
@@ -19,21 +19,21 @@ public interface ResourceService {
      * @param currentUser
      * @return
      */
-    List<Tree> findTree(User currentUser);
+    List<Tree> findTree(SysUser currentUser);
 
     /**
      * 查询所有资源
      *
      * @return
      */
-    List<Resource> findResourceAll();
+    List<SysResource> findResourceAll();
 
     /**
      * 添加资源
      *
      * @param resource
      */
-    void addResource(Resource resource);
+    void addResource(SysResource resource);
 
     /**
      * 查询二级数
@@ -54,7 +54,7 @@ public interface ResourceService {
      *
      * @param resource
      */
-    void updateResource(Resource resource);
+    void updateResource(SysResource resource);
 
     /**
      * 根据id查询资源
@@ -62,7 +62,7 @@ public interface ResourceService {
      * @param id
      * @return
      */
-    Resource findResourceById(Long id);
+    SysResource findResourceById(Long id);
 
     /**
      * 根据id删除资源

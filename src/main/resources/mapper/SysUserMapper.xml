@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.manage.mapper.UserMapper">
-    <resultMap id="BaseResultMap" type="com.manage.model.User">
+<mapper namespace="com.manage.mapper.SysUserMapper">
+    <resultMap id="BaseResultMap" type="com.manage.model.SysUser">
         <id column="id" property="id" jdbcType="BIGINT"/>
         <result column="login_name" property="loginName" jdbcType="VARCHAR"/>
         <result column="name" property="name" jdbcType="VARCHAR"/>
@@ -15,7 +15,7 @@
         <result column="phone" property="phone" jdbcType="VARCHAR"/>
     </resultMap>
 
-    <resultMap id="userVoResultMap" type="com.manage.vo.UserVo">
+    <resultMap id="userVoResultMap" type="com.manage.vo.SysUserVo">
         <id column="id" property="id" jdbcType="BIGINT"/>
         <result column="login_name" property="loginName" jdbcType="VARCHAR"/>
         <result column="name" property="name" jdbcType="VARCHAR"/>
@@ -30,7 +30,7 @@
 
         <result column="organizationName" property="organizationName" jdbcType="VARCHAR"/>
 
-        <collection property="rolesList" ofType="com.manage.model.Role">
+        <collection property="rolesList" ofType="com.manage.model.SysRole">
             <id column="roleId" property="id"/>
             <result column="roleName" property="name"/>
         </collection>
@@ -42,14 +42,14 @@
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
         select
         <include refid="Base_Column_List"/>
-        from user
+        from sys_user
         where id = #{id,jdbcType=BIGINT}
     </select>
 
     <select id="findUserByLoginName" resultMap="BaseResultMap" parameterType="java.lang.String">
         select
         <include refid="Base_Column_List"/>
-        from user
+        from sys_user
         where login_name = #{username}
     </select>
 
@@ -70,9 +70,9 @@
         o.id AS roleId,
         o.`name` AS roleName
         FROM
-        user t
+        sys_user t
         LEFT JOIN user_role r ON t.id = r.user_id
-        LEFT JOIN role o ON r.role_id = o.id
+        LEFT JOIN sys_role o ON r.role_id = o.id
         LEFT JOIN organization s ON s.id = t.organization_id
         <where>
             t.id = #{id}
@@ -82,7 +82,7 @@
     <select id="findUserById" resultMap="BaseResultMap" parameterType="java.lang.Long">
         select
         <include refid="Base_Column_List"/>
-        from user
+        from sys_user
         where id = #{id}
     </select>
 
@@ -103,9 +103,9 @@
         o.id AS roleId,
         o.`name` AS roleName
         FROM
-        user t
+        sys_user t
         LEFT JOIN user_role r ON t.id = r.user_id
-        LEFT JOIN role o ON r.role_id = o.id
+        LEFT JOIN sys_role o ON r.role_id = o.id
         LEFT JOIN organization s ON s.id = t.organization_id
         <where>
             <if test=" condition.name != null and condition.name != '' ">
@@ -130,7 +130,7 @@
 
     <select id="findUserPageCount" resultType="java.lang.Integer" parameterType="com.manage.utils.PageInfo">
         select count(*) count
-        from user t
+        from sys_user t
         <where>
             <if test=" condition.name != null and condition.name != '' ">
                 t.name = #{condition.name}
@@ -152,15 +152,15 @@
     </select>
 
     <delete id="deleteById" parameterType="java.lang.Long">
-    delete from user
+    delete from sys_user
     where id = #{id,jdbcType=BIGINT}
   </delete>
 
-    <insert id="insert" parameterType="com.manage.model.User">
+    <insert id="insert" parameterType="com.manage.model.SysUser">
         <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
             SELECT LAST_INSERT_ID()
         </selectKey>
-        insert into user (login_name, name, password,
+        insert into sys_user (login_name, name, password,
         sex, age, user_type,
         status, organization_id, create_date,
         phone)
@@ -171,14 +171,14 @@
     </insert>
 
     <update id="updateUserPwdById">
-    update user
+    update sys_user
     set password = #{pwd,jdbcType=VARCHAR},
     create_date = now()
     where id = #{userId,jdbcType=BIGINT}
   </update>
 
-    <update id="updateUser" parameterType="com.manage.model.User">
-        update user
+    <update id="updateUser" parameterType="com.manage.model.SysUser">
+        update sys_user
         <set>
             <if test="loginName != null">
                 login_name = #{loginName,jdbcType=VARCHAR},

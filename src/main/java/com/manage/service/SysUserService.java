@@ -1,8 +1,8 @@
 package com.manage.service;
 
-import com.manage.model.User;
+import com.manage.model.SysUser;
 import com.manage.utils.PageInfo;
-import com.manage.vo.UserVo;
+import com.manage.vo.SysUserVo;
 
 /***
  *
@@ -22,14 +22,14 @@ import com.manage.vo.UserVo;
 * 审核描述：
 *
  */
-public interface UserService {
+public interface SysUserService {
     /**
      * 根据用户名查询用户
      *
      * @param userName
      * @return
      */
-    User findUserByLoginName(String userName);
+    SysUser findUserByLoginName(String userName);
 
     /**
      * 根据用户id查询用户
@@ -37,7 +37,7 @@ public interface UserService {
      * @param id
      * @return
      */
-    User findUserById(Long id);
+    SysUser findUserById(Long id);
 
     /**
      * 用户列表
@@ -51,7 +51,7 @@ public interface UserService {
      *
      * @param userVo
      */
-    void addUser(UserVo userVo);
+    void addUser(SysUserVo userVo);
 
     /**
      * 修改密码
@@ -67,14 +67,14 @@ public interface UserService {
      * @param id
      * @return
      */
-    UserVo findUserVoById(Long id);
+    SysUserVo findUserVoById(Long id);
 
     /**
      * 修改用户
      *
      * @param userVo
      */
-    void updateUser(UserVo userVo);
+    void updateUser(SysUserVo userVo);
 
     /**
      * 删除用户

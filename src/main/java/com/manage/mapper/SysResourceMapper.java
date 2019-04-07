@@ -1,6 +1,6 @@
 package com.manage.mapper;
 
-import com.manage.model.Resource;
+import com.manage.model.SysResource;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -25,14 +25,14 @@ import java.util.List;
  *
  */
 @Repository
-public interface ResourceMapper {
+public interface SysResourceMapper {
     /**
      * 添加资源
      *
      * @param resource
      * @return
      */
-    int insert(Resource resource);
+    int insert(SysResource resource);
 
     /**
      * 修改资源
@@ -40,7 +40,7 @@ public interface ResourceMapper {
      * @param resource
      * @return
      */
-    int updateResource(Resource resource);
+    int updateResource(SysResource resource);
 
     /**
      * 查询菜单资源
@@ -49,14 +49,14 @@ public interface ResourceMapper {
      * @param pid
      * @return
      */
-    List<Resource> findResourceAllByTypeAndPid(@Param("resourceType") Integer resourceType, @Param("pid") Long pid);
+    List<SysResource> findResourceAllByTypeAndPid(@Param("resourceType") Integer resourceType, @Param("pid") Long pid);
 
     /**
      * 查询所有资源
      *
      * @return
      */
-    List<Resource> findResourceAll();
+    List<SysResource> findResourceAll();
 
     /**
      * 查询一级资源
@@ -64,7 +64,7 @@ public interface ResourceMapper {
      * @param resourceMenu
      * @return
      */
-    List<Resource> findResourceAllByTypeAndPidNull(Integer resourceMenu);
+    List<SysResource> findResourceAllByTypeAndPidNull(Integer resourceMenu);
 
     /**
      * 根据id查询资源
@@ -72,7 +72,7 @@ public interface ResourceMapper {
      * @param id
      * @return
      */
-    Resource findResourceById(Long id);
+    SysResource findResourceById(Long id);
 
     /**
      * 删除资源

@@ -1,12 +1,12 @@
 package com.manage.service.impl;
 
-import com.manage.mapper.UserMapper;
+import com.manage.mapper.SysUserMapper;
 import com.manage.mapper.UserRoleMapper;
-import com.manage.model.User;
+import com.manage.model.SysUser;
 import com.manage.model.UserRole;
-import com.manage.service.UserService;
+import com.manage.service.SysUserService;
 import com.manage.utils.PageInfo;
-import com.manage.vo.UserVo;
+import com.manage.vo.SysUserVo;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,22 +36,22 @@ import java.util.List;
  */
 @Service
 @Transactional(rollbackFor = RuntimeException.class)
-public class UserServiceImpl implements UserService {
+public class SysUserServiceImpl implements SysUserService {
 
-    private static Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
+    private static Logger LOGGER = LoggerFactory.getLogger(SysUserServiceImpl.class);
 
     @Autowired
-    private UserMapper userMapper;
+    private SysUserMapper userMapper;
     @Autowired
     private UserRoleMapper userRoleMapper;
 
     @Override
-    public User findUserByLoginName(String username) {
+    public SysUser findUserByLoginName(String username) {
         return userMapper.findUserByLoginName(username);
     }
 
     @Override
-    public User findUserById(Long id) {
+    public SysUser findUserById(Long id) {
         return userMapper.findUserById(id);
     }
 
@@ -62,8 +62,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void addUser(UserVo userVo) {
-        User user = new User();
+    public void addUser(SysUserVo userVo) {
+        SysUser user = new SysUser();
         try {
             PropertyUtils.copyProperties(user, userVo);
         } catch (Exception e) {
@@ -89,13 +89,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserVo findUserVoById(Long id) {
+    public SysUserVo findUserVoById(Long id) {
         return userMapper.findUserVoById(id);
     }
 
     @Override
-    public void updateUser(UserVo userVo) {
-        User user = new User();
+    public void updateUser(SysUserVo userVo) {
+        SysUser user = new SysUser();
         try {
             PropertyUtils.copyProperties(user, userVo);
         } catch (Exception e) {

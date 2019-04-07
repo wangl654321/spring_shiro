@@ -1,7 +1,7 @@
 package com.manage.controller;
 
-import com.manage.model.User;
-import com.manage.service.UserService;
+import com.manage.model.SysUser;
+import com.manage.service.SysUserService;
 import com.manage.shiro.ShiroUser;
 import com.manage.utils.StringEscapeEditor;
 import org.apache.shiro.SecurityUtils;
@@ -21,7 +21,7 @@ import java.util.Date;
 public class BaseController {
 
     @Autowired
-    private UserService userService;
+    private SysUserService userService;
 
     @InitBinder
     public void initBinder(ServletRequestDataBinder binder) {
@@ -40,9 +40,9 @@ public class BaseController {
      * 获取当前登录用户对象
      * @return
      */
-    public User getCurrentUser() {
+    public SysUser getCurrentUser() {
         ShiroUser user = (ShiroUser) SecurityUtils.getSubject().getPrincipal();
-        User currentUser = userService.findUserById(user.id);
+        SysUser currentUser = userService.findUserById(user.id);
         return currentUser;
     }
 

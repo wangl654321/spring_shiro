@@ -7,7 +7,7 @@ import java.io.Serializable;
  * @author：zhixuan.wang
  * @date：2015/10/1 14:51
  */
-public class Role implements Serializable {
+public class SysRole implements Serializable {
 
     private static final long serialVersionUID = -1756241579303707517L;
 

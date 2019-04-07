@@ -1,9 +1,9 @@
 package com.manage.shiro;
 
 import com.google.common.collect.Sets;
-import com.manage.model.User;
-import com.manage.service.RoleService;
-import com.manage.service.UserService;
+import com.manage.model.SysUser;
+import com.manage.service.SysRoleService;
+import com.manage.service.SysUserService;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -28,10 +28,10 @@ public class ShiroDbRealm extends AuthorizingRealm {
     private static Logger LOGGER = LoggerFactory.getLogger(ShiroDbRealm.class);
 
     @Autowired
-    private UserService userService;
+    private SysUserService userService;
 
     @Autowired
-    private RoleService roleService;
+    private SysRoleService roleService;
 
     /**
      * Shiro登录认证(原理：用户提交 用户名和密码  --- shiro 封装令牌 ---- realm 通过用户名将密码查询返回 ---- shiro 自动去比较查询出密码和用户输入密码是否一致---- 进行登陆控制 )
@@ -41,7 +41,7 @@ public class ShiroDbRealm extends AuthorizingRealm {
             AuthenticationToken authcToken) throws AuthenticationException {
         LOGGER.info("Shiro开始登录认证");
         UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
-        User user = userService.findUserByLoginName(token.getUsername());
+        SysUser user = userService.findUserByLoginName(token.getUsername());
         // 账号不存在
         if (user == null) {
             return null;

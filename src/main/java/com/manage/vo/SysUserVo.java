@@ -1,17 +1,19 @@
-package com.manage.model;
+package com.manage.vo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.manage.model.SysRole;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /***
  *
 *
-* 描    述：用户
+* 描    述：用户UserVo
 *
 * 创 建 者： @author wl
-* 创建时间： 2019/4/5 20:09
+* 创建时间： 2019/4/5 20:13
 * 创建描述：
 *
 * 修 改 者：
@@ -23,9 +25,10 @@ import java.util.Date;
 * 审核描述：
 *
  */
-public class User implements Serializable {
+public class SysUserVo implements Serializable {
 
-    private static final long serialVersionUID = 6700813629656881143L;
+
+    private static final long serialVersionUID = 1L;
 
     private Long id;
 
@@ -49,6 +52,17 @@ public class User implements Serializable {
     private Date createDate;
 
     private String phone;
+
+    private List<SysRole> rolesList;
+
+    private String organizationName;
+
+    private String roleIds;
+
+    private Date createDateStart;
+
+    private Date createDateEnd;
+
 
     public Long getId() {
         return id;
@@ -138,20 +152,43 @@ public class User implements Serializable {
         this.phone = phone;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", loginName='" + loginName + '\'' +
-                ", name='" + name + '\'' +
-                ", password='" + password + '\'' +
-                ", sex=" + sex +
-                ", age=" + age +
-                ", userType=" + userType +
-                ", status=" + status +
-                ", organizationId=" + organizationId +
-                ", createDate=" + createDate +
-                ", phone='" + phone + '\'' +
-                '}';
+    public List<SysRole> getRolesList() {
+        return rolesList;
+    }
+
+    public void setRolesList(List<SysRole> rolesList) {
+        this.rolesList = rolesList;
+    }
+
+    public String getOrganizationName() {
+        return organizationName;
+    }
+
+    public void setOrganizationName(String organizationName) {
+        this.organizationName = organizationName;
+    }
+
+    public String getRoleIds() {
+        return roleIds;
+    }
+
+    public void setRoleIds(String roleIds) {
+        this.roleIds = roleIds;
+    }
+
+    public Date getCreateDateStart() {
+        return createDateStart;
+    }
+
+    public void setCreateDateStart(Date createDateStart) {
+        this.createDateStart = createDateStart;
+    }
+
+    public Date getCreateDateEnd() {
+        return createDateEnd;
+    }
+
+    public void setCreateDateEnd(Date createDateEnd) {
+        this.createDateEnd = createDateEnd;
     }
 }

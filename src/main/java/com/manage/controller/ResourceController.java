@@ -1,9 +1,9 @@
 package com.manage.controller;
 
 import com.manage.code.Result;
-import com.manage.model.Resource;
-import com.manage.model.User;
-import com.manage.service.ResourceService;
+import com.manage.model.SysResource;
+import com.manage.model.SysUser;
+import com.manage.service.SysResourceService;
 import com.manage.vo.Tree;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,7 +28,7 @@ public class ResourceController extends BaseController {
     private static Logger logger = LoggerFactory.getLogger(ResourceController.class);
 
     @Autowired
-    private ResourceService resourceService;
+    private SysResourceService resourceService;
 
     /**
      * 菜单树
@@ -38,7 +38,7 @@ public class ResourceController extends BaseController {
     @RequestMapping(value = "/tree", method = RequestMethod.POST)
     @ResponseBody
     public List<Tree> tree() {
-        User currentUser = getCurrentUser();
+        SysUser currentUser = getCurrentUser();
         List<Tree> tree = resourceService.findTree(currentUser);
         return tree;
     }
@@ -60,8 +60,8 @@ public class ResourceController extends BaseController {
      */
     @RequestMapping(value = "/treeGrid", method = RequestMethod.POST)
     @ResponseBody
-    public List<Resource> treeGrid() {
-        List<Resource> treeGrid = resourceService.findResourceAll();
+    public List<SysResource> treeGrid() {
+        List<SysResource> treeGrid = resourceService.findResourceAll();
         return treeGrid;
     }
 
@@ -83,7 +83,7 @@ public class ResourceController extends BaseController {
      */
     @RequestMapping("/add")
     @ResponseBody
-    public Result add(Resource resource) {
+    public Result add(SysResource resource) {
         Result result = new Result();
         try {
             resourceService.addResource(resource);
@@ -128,7 +128,7 @@ public class ResourceController extends BaseController {
      */
     @RequestMapping("/editPage")
     public String editPage(HttpServletRequest request, Long id) {
-        Resource resource = resourceService.findResourceById(id);
+        SysResource resource = resourceService.findResourceById(id);
         request.setAttribute("resource", resource);
         return "/admin/resourceEdit";
     }
@@ -141,7 +141,7 @@ public class ResourceController extends BaseController {
      */
     @RequestMapping("/edit")
     @ResponseBody
-    public Result edit(Resource resource) {
+    public Result edit(SysResource resource) {
         Result result = new Result();
         try {
             resourceService.updateResource(resource);

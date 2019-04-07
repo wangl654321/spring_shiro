@@ -1,7 +1,7 @@
 package com.manage.mapper;
 
-import com.manage.model.Resource;
-import com.manage.model.Role;
+import com.manage.model.SysResource;
+import com.manage.model.SysRole;
 import com.manage.utils.PageInfo;
 import org.springframework.stereotype.Repository;
 
@@ -27,14 +27,14 @@ import java.util.Map;
  *
  */
 @Repository
-public interface RoleMapper {
+public interface SysRoleMapper {
     /**
      * 添加角色
      *
      * @param role
      * @return
      */
-    int insert(Role role);
+    int insert(SysRole role);
 
     /**
      * 查询角色列表
@@ -57,7 +57,7 @@ public interface RoleMapper {
      *
      * @return
      */
-    List<Role> findRoleAll();
+    List<SysRole> findRoleAll();
 
     /**
      * 根据id查询角色
@@ -65,7 +65,7 @@ public interface RoleMapper {
      * @param id
      * @return
      */
-    Role findRoleById(Long id);
+    SysRole findRoleById(Long id);
 
     /**
      * 更新角色
@@ -73,7 +73,7 @@ public interface RoleMapper {
      * @param role
      * @return
      */
-    int updateRole(Role role);
+    int updateRole(SysRole role);
 
     /**
      * 删除角色
@@ -113,6 +113,6 @@ public interface RoleMapper {
      * @param i
      * @return
      */
-    List<Resource> findResourceIdListByRoleIdAndType(Long i);
+    List<SysResource> findResourceIdListByRoleIdAndType(Long i);
 
 }

@@ -2,7 +2,7 @@ package com.manage.service.impl;
 
 import com.manage.mapper.SysLogMapper;
 import com.manage.model.SysLog;
-import com.manage.service.LogService;
+import com.manage.service.SysLogService;
 import com.manage.utils.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,7 +28,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 @Transactional(rollbackFor = RuntimeException.class)
-public class LogServiceImpl implements LogService {
+public class SysLogServiceImpl implements SysLogService {
 
     @Autowired
     private SysLogMapper sysLogMapper;

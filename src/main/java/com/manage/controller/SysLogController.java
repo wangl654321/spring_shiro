@@ -2,7 +2,7 @@ package com.manage.controller;
 
 import com.google.common.collect.Maps;
 import com.manage.model.SysLog;
-import com.manage.service.LogService;
+import com.manage.service.SysLogService;
 import com.manage.utils.PageInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,7 +25,7 @@ public class SysLogController {
     private static Logger logger = LoggerFactory.getLogger(SysLogController.class);
 
     @Autowired
-    private LogService logService;
+    private SysLogService logService;
 
 
     @RequestMapping(value = "/manager", method = RequestMethod.GET)

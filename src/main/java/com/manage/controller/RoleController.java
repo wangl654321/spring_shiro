@@ -2,8 +2,8 @@ package com.manage.controller;
 
 import com.google.common.collect.Maps;
 import com.manage.code.Result;
-import com.manage.model.Role;
-import com.manage.service.RoleService;
+import com.manage.model.SysRole;
+import com.manage.service.SysRoleService;
 import com.manage.utils.PageInfo;
 import com.manage.vo.Tree;
 import org.slf4j.Logger;
@@ -44,7 +44,7 @@ public class RoleController extends BaseController {
     private static Logger logger = LoggerFactory.getLogger(RoleController.class);
 
     @Autowired
-    private RoleService roleService;
+    private SysRoleService roleService;
 
     /**
      * 权限管理页
@@ -68,7 +68,7 @@ public class RoleController extends BaseController {
      */
     @RequestMapping(value = "/dataGrid", method = RequestMethod.POST)
     @ResponseBody
-    public PageInfo dataGrid(Role role, Integer page, Integer rows, String sort, String order) {
+    public PageInfo dataGrid(SysRole role, Integer page, Integer rows, String sort, String order) {
         PageInfo pageInfo = new PageInfo(page, rows, sort, order);
         Map<String, Object> condition = Maps.newHashMap();
         pageInfo.setCondition(condition);
@@ -106,7 +106,7 @@ public class RoleController extends BaseController {
      */
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
-    public Result add(Role role) {
+    public Result add(SysRole role) {
         Result result = new Result();
         try {
             roleService.addRole(role);
@@ -151,7 +151,7 @@ public class RoleController extends BaseController {
      */
     @RequestMapping("/editPage")
     public String editPage(HttpServletRequest request, Long id) {
-        Role role = roleService.findRoleById(id);
+        SysRole role = roleService.findRoleById(id);
         request.setAttribute("role", role);
         return "/admin/roleEdit";
     }
@@ -164,7 +164,7 @@ public class RoleController extends BaseController {
      */
     @RequestMapping("/edit")
     @ResponseBody
-    public Result edit(Role role) {
+    public Result edit(SysRole role) {
         Result result = new Result();
         try {
             roleService.updateRole(role);
