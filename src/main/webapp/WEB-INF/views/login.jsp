@@ -194,6 +194,7 @@
 <body onkeydown="enterLogin();">
 <div class="top_div"></div>
 <div style="background: rgb(255, 255, 255); margin: -100px auto auto; border: 1px solid rgb(231, 231, 231); border-image: none; width: 400px; height: 200px; text-align: center;">
+
     <form method="post" id="loginForm">
         <div style="width: 165px; height: 96px; position: absolute;">
             <div class="tou"></div>
@@ -211,7 +212,7 @@
         <div style="height: 50px; line-height: 50px; margin-top: 30px; border-top-color: rgb(231, 231, 231); border-top-width: 1px; border-top-style: solid;">
             <P style="margin: 0px 35px 20px 45px;">
                 <span style="float: left;">
-                    <a style="color: rgb(204, 204, 204);" href="javascript:;">忘记密码?</a>
+                    <input type="checkbox" id="checkbox" name="checkbox" data-bind="checked:form.remember"/><span><label for="checkbox"> 系统记住我</label></span>
                 </span>
                 <span style="float: right;">
                     <a style="color: rgb(204, 204, 204); margin-right: 10px;" href="javascript:;">注册</a>
