@@ -122,7 +122,7 @@ public class LoginController {
         if (SecurityUtils.getSubject().isAuthenticated() == false) {
             return "redirect:/login";
         }
-        return "/login";
+        return "/unAuth";
     }
 
     /**
