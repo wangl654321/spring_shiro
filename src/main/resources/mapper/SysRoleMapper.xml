@@ -80,7 +80,7 @@
         r.id = #{id}
   </select>
 
-    <select id="findRoleResourceListByRoleId" resultType="java.util.HashMap" parameterType="java.lang.Long">
+    <select id="findRoleResourceListByRoleId" resultType="com.manage.model.SysRoleModel" parameterType="java.lang.Long">
     SELECT
         e.id AS id,
         s.url AS url

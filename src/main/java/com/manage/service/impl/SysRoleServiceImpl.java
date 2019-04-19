@@ -6,6 +6,7 @@ import com.manage.mapper.RoleResourceMapper;
 import com.manage.mapper.UserRoleMapper;
 import com.manage.model.SysRole;
 import com.manage.model.RoleResource;
+import com.manage.model.SysRoleModel;
 import com.manage.utils.PageInfo;
 import com.manage.vo.Tree;
 import com.manage.exception.ServiceException;
@@ -131,7 +132,7 @@ public class SysRoleServiceImpl implements SysRoleService {
     }
 
     @Override
-    public List<Map<Long, String>> findRoleResourceListByRoleId(Long roleId) {
+    public List<SysRoleModel> findRoleResourceListByRoleId(Long roleId) {
         return roleMapper.findRoleResourceListByRoleId(roleId);
     }
 

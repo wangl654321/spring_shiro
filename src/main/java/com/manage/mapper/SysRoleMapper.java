@@ -2,11 +2,11 @@ package com.manage.mapper;
 
 import com.manage.model.SysResource;
 import com.manage.model.SysRole;
+import com.manage.model.SysRoleModel;
 import com.manage.utils.PageInfo;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Map;
 
 /***
  *
@@ -105,7 +105,7 @@ public interface SysRoleMapper {
      * @param id
      * @return
      */
-    List<Map<Long, String>> findRoleResourceListByRoleId(Long id);
+    List<SysRoleModel> findRoleResourceListByRoleId(Long id);
 
     /**
      * 查询角色下的菜单列表

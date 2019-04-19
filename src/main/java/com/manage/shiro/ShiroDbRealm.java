@@ -1,6 +1,7 @@
 package com.manage.shiro;
 
 import com.google.common.collect.Sets;
+import com.manage.model.SysRoleModel;
 import com.manage.model.SysUser;
 import com.manage.service.SysRoleService;
 import com.manage.service.SysUserService;
@@ -69,11 +70,12 @@ public class ShiroDbRealm extends AuthorizingRealm {
 
         Set<String> urlSet = Sets.newHashSet();
         for (Long roleId : roleList) {
-            List<Map<Long, String>> roleResourceList = roleService.findRoleResourceListByRoleId(roleId);
+            //查询角色对应的资源地址
+            List<SysRoleModel> roleResourceList = roleService.findRoleResourceListByRoleId(roleId);
             if (roleResourceList != null) {
-                for (Map<Long, String> map : roleResourceList) {
-                    if (StringUtils.isNoneBlank(map.get("url"))) {
-                        urlSet.add(map.get("url"));
+                for (SysRoleModel sysRoleModel : roleResourceList) {
+                    if(StringUtils.isNotEmpty(sysRoleModel.getUrl())){
+                        urlSet.add(sysRoleModel.getUrl());
                     }
                 }
             }

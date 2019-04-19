@@ -1,6 +1,7 @@
 package com.manage.service;
 
 import com.manage.model.SysRole;
+import com.manage.model.SysRoleModel;
 import com.manage.utils.PageInfo;
 import com.manage.vo.Tree;
 
@@ -86,6 +87,6 @@ public interface SysRoleService {
      * @param roleId
      * @return
      */
-    List<Map<Long, String>> findRoleResourceListByRoleId(Long roleId);
+    List<SysRoleModel> findRoleResourceListByRoleId(Long roleId);
 
 }
