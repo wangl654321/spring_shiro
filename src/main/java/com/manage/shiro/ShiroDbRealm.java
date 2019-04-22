@@ -16,13 +16,25 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
-/**
- * @description：shiro权限认证
- * @author：zhixuan.wang
- * @date：2015/10/1 14:51
+/***
+ *
+ *
+ * 描    述：shiro权限认证
+ *
+ * 创 建 者： @author wl
+ * 创建时间： 2019/4/22 9:41
+ * 创建描述：
+ *
+ * 修 改 者：
+ * 修改时间：
+ * 修改描述：
+ *
+ * 审 核 者：
+ * 审核时间：
+ * 审核描述：
+ *
  */
 public class ShiroDbRealm extends AuthorizingRealm {
 
@@ -74,7 +86,7 @@ public class ShiroDbRealm extends AuthorizingRealm {
             List<SysRoleModel> roleResourceList = roleService.findRoleResourceListByRoleId(roleId);
             if (roleResourceList != null) {
                 for (SysRoleModel sysRoleModel : roleResourceList) {
-                    if(StringUtils.isNotEmpty(sysRoleModel.getUrl())){
+                    if (StringUtils.isNotEmpty(sysRoleModel.getUrl())) {
                         urlSet.add(sysRoleModel.getUrl());
                     }
                 }

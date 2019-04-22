@@ -4,7 +4,6 @@
        default-lazy-init="true">
 
     <description>shiro安全配置</description>
-
     <!-- remenberMe配置 -->
     <bean id="rememberMeCookie" class="org.apache.shiro.web.servlet.SimpleCookie">
         <constructor-arg value="rememberMe" />
